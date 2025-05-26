@@ -38,11 +38,18 @@ public class Book {
         return this.getName() + " " + this.author.getName() + " " + this.author.getSurname() + " " + this.getYear();
     }
 
-    public boolean equals(Book otherObject) {
+    /*public boolean equals(Book otherObject) {
         if (this.author.equals(otherObject.author)) {
             if (this.name.equals(otherObject.name)) return true;
             else return false;
         } else return false;
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return year == book.year && Objects.equals(author, book.author) && Objects.equals(name, book.name);
     }
 
     @Override

@@ -25,15 +25,22 @@ public class Author {
         return surname;
     }
 
-    public String toString(){
+   public String toString(){
         return this.getName() + " " + this.getSurname();
     }
 
-    public boolean equals(Author otherObject) {
+    /*public boolean equals(Author otherObject) {
         if (this.name.equals(otherObject.name)) {
             if (this.surname.equals(otherObject.surname)) return true;
             else return false;
         } else return false;
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return Objects.equals(name, author.name) && Objects.equals(surname, author.surname);
     }
 
     @Override
